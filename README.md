@@ -10,19 +10,15 @@ One script to reproduce a Claude Code environment with:
 
 ## Usage
 
-On any new machine with Claude Code, git, and (ideally) Docker already installed:
+On any new machine with Claude Code and git installed (Docker optional, for freellmapi):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/shivamsodha-ship-it/claude-tools-setup/main/install.sh | bash
-```
-
-or clone and run locally:
-
-```bash
-git clone https://github.com/shivamsodha-ship-it/claude-tools-setup.git
-cd claude-tools-setup
+git clone https://github.com/shivamsodha-ship-it/Skills.git
+cd Skills
 bash install.sh
 ```
+
+If the repo is private, log in first with `gh auth login` (or use a personal access token) so the clone works.
 
 Everything installs to your user-level `~/.claude` config, so it's available in every project you open with Claude Code on that machine — this script needs to be re-run on each new machine, since Claude Code has no built-in cross-machine sync for skills/plugins.
 
