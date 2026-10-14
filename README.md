@@ -6,6 +6,9 @@ One script to reproduce a Claude Code environment with:
 - **gstack** — 55-skill Claude Code workflow suite
 - **strix** — AI pentesting skills (authorized security research / CTF use only)
 - **i-have-adhd** — terse-output Claude Code plugin
+- **context7** — up-to-date library documentation for Claude (official marketplace plugin)
+- **superpowers** — planning, test-first and code-review workflows (official marketplace plugin)
+- **code-simplifier** — agent that tidies recently changed code without changing behaviour (official marketplace plugin)
 - **freellmapi** — self-hosted free-tier LLM router (Docker)
 
 ## Usage

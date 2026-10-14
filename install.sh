@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Reproduces the 5-tool Claude Code setup (graphify, gstack, strix skills,
-# i-have-adhd plugin, freellmapi) on a fresh machine/codespace.
+# Reproduces the Claude Code setup (graphify, gstack, strix skills, i-have-adhd,
+# context7, superpowers, code-simplifier, freellmapi) on a fresh machine/codespace.
 # Run once per machine: bash claude-tools-setup.sh
 set -uo pipefail
 
@@ -44,7 +44,16 @@ say "i-have-adhd plugin"
 claude plugin marketplace add ayghri/i-have-adhd || warn "marketplace add failed"
 claude plugin install i-have-adhd@i-have-adhd || warn "plugin install failed"
 
-# ---- 5. freellmapi: free-tier LLM router (Docker service) --------------
+# ---- 5. From Anthropic's official plugin marketplace (user scope) ------
+# context7: up-to-date library documentation for Claude (Upstash). superpowers: planning, testing and review workflows (obra).
+# code-simplifier: an agent that tidies recently changed code without changing what it does. Re-running is safe.
+say "official marketplace plugins: context7, superpowers, code-simplifier"
+claude plugin marketplace add anthropics/claude-plugins-official || warn "official marketplace add failed (it may already be added)"
+for p in context7 superpowers code-simplifier; do
+  claude plugin install "$p@claude-plugins-official" || warn "$p install failed"
+done
+
+# ---- 6. freellmapi: free-tier LLM router (Docker service) --------------
 say "freellmapi"
 if command -v docker >/dev/null 2>&1 && docker info >/dev/null 2>&1; then
   curl -fsSL https://freellmapi.co/install.sh | bash
